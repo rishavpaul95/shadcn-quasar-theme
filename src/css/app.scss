@@ -1,1 +1,78 @@
 // app global css in SCSS form
+
+// Theme variables
+:root {
+  --theme-transition: all 0.3s ease;
+  --card-bg-light: rgba(255, 255, 255, 0.95);
+  --card-bg-dark: rgba(30, 30, 30, 0.95);
+  --text-primary-light: #1a1a1a;
+  --text-primary-dark: #ffffff;
+  --text-secondary-light: #666666;
+  --text-secondary-dark: #cccccc;
+}
+
+// Global theme styles
+body {
+  transition: var(--theme-transition);
+}
+
+// Dark mode adjustments
+.body--dark {
+  // Custom dark mode styles for components that need it
+  .q-card {
+    background-color: var(--card-bg-dark) !important;
+    color: var(--text-primary-dark);
+  }
+
+  .q-input .q-field__control {
+    color: var(--text-primary-dark);
+  }
+
+  .q-field--outlined .q-field__control:before {
+    border-color: rgba(255, 255, 255, 0.28);
+  }
+}
+
+// Light mode adjustments
+.body--light {
+  .q-card {
+    background-color: var(--card-bg-light) !important;
+    color: var(--text-primary-light);
+  }
+}
+
+// Smooth transitions for theme changes
+* {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+// Themed components
+.themed-card {
+  background: var(--card-bg-light);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  transition: var(--theme-transition);
+}
+
+.body--dark .themed-card {
+  background: var(--card-bg-dark);
+}
+
+.themed-text-primary {
+  color: var(--text-primary-light);
+}
+
+.body--dark .themed-text-primary {
+  color: var(--text-primary-dark);
+}
+
+.themed-text-secondary {
+  color: var(--text-secondary-light);
+}
+
+.body--dark .themed-text-secondary {
+  color: var(--text-secondary-dark);
+}

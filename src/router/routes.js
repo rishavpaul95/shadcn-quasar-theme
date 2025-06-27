@@ -1,9 +1,41 @@
+import { requireAuth, requireGuest } from './guards'
+
 const routes = [
+  // Auth routes - using AuthLayout
+  {
+    path: '/auth',
+    component: () => import('layouts/AuthLayout.vue'),
+    beforeEnter: requireGuest,
+    children: [
+      {
+        path: 'login',
+        name: 'login',
+        component: () => import('pages/LoginPage.vue')
+      },
+      {
+        path: 'register',
+        name: 'register',
+        component: () => import('pages/RegisterPage.vue')
+      }
+    ]
+  },
+
+  // Main app routes - using MainLayout with auth guard
   {
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
+    beforeEnter: requireAuth,
     children: [
-      { path: '', component: () => import('pages/IndexPage.vue') }
+      {
+        path: '',
+        name: 'home',
+        component: () => import('pages/IndexPage.vue')
+      },
+      {
+        path: 'dashboard',
+        name: 'dashboard',
+        component: () => import('pages/DashboardPage.vue')
+      }
     ]
   },
 
