@@ -80,10 +80,10 @@ const linksList = [
     route: { name: 'dashboard' },
   },
   {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev',
+    title: 'Components',
+    caption: 'UI components',
+    icon: 'widgets',
+    route: { name: 'components' },
   },
   {
     title: 'Github',
