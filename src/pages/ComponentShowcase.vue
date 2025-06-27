@@ -116,10 +116,24 @@
           <q-btn fab color="primary" icon="add" />
         </div>
         <div class="row q-gutter-md">
-          <q-btn color="primary" label="Loading" loading />
           <q-btn color="primary" label="Disabled" disable />
           <q-btn color="primary" label="With Icon" icon="star" />
           <q-btn color="primary" label="Icon Right" icon-right="arrow_forward" />
+        </div>
+
+        <!-- Loading Button Variations for Testing -->
+        <div class="q-mt-md">
+          <div class="text-subtitle2 text-foreground q-mb-sm">Loading Button Variations</div>
+          <div class="row q-gutter-md q-mb-md">
+            <q-btn color="secondary" label="Secondary Loading" loading />
+            <q-btn color="positive" label="Success Loading" loading />
+            <q-btn color="negative" label="Error Loading" loading />
+          </div>
+          <div class="row q-gutter-md q-mb-md">
+            <q-btn outline color="primary" label="Outline Loading" loading />
+            <q-btn flat color="positive" label="Flat Loading" loading />
+            <q-btn unelevated color="warning" label="Warning Loading" loading />
+          </div>
         </div>
       </q-card-section>
     </q-card>
@@ -322,7 +336,7 @@
     </q-card>
 
     <!-- Floating Action Button for Quick Navigation -->
-    <q-page-sticky position="bottom-right" :offset="[18, 18]">
+    <q-page-sticky position="bottom-right" :offset="[50, 12]">
       <q-fab icon="navigation" direction="up" color="primary" :model-value="false">
         <q-fab-action
           @click="scrollToSection('notifications')"

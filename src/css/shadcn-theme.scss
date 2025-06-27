@@ -731,24 +731,190 @@ body {
   }
 }
 
-// Loading spinners
+// Enhanced Button Loading States with proper spinner visibility
+.q-btn {
+  font-family: 'Geist', sans-serif !important;
+  font-weight: 500 !important;
+
+  // Loading state - comprehensive fix for spinner visibility
+  &.q-btn--loading {
+    position: relative !important;
+
+    // Hide button content when loading
+    .q-btn__content {
+      opacity: 0 !important;
+    }
+
+    // Position spinner properly
+    .q-spinner {
+      position: absolute !important;
+      top: 50% !important;
+      left: 50% !important;
+      transform: translate(-50%, -50%) !important;
+      z-index: 2 !important;
+    }
+
+    // Default white spinner for most buttons
+    .q-spinner {
+      color: white !important;
+    }
+
+    // Primary button loading states
+    &.bg-primary,
+    &[color='primary'] {
+      .q-spinner {
+        color: hsl(var(--primary-foreground)) !important;
+      }
+    }
+
+    // Secondary button loading states
+    &.bg-secondary,
+    &[color='secondary'] {
+      .q-spinner {
+        color: hsl(var(--secondary-foreground)) !important;
+      }
+    }
+
+    // Positive/Success button loading
+    &.bg-positive,
+    &[color='positive'] {
+      .q-spinner {
+        color: white !important;
+      }
+    }
+
+    // Negative/Error button loading
+    &.bg-negative,
+    &[color='negative'] {
+      .q-spinner {
+        color: white !important;
+      }
+    }
+
+    // Warning button loading
+    &.bg-warning,
+    &[color='warning'] {
+      .q-spinner {
+        color: white !important;
+      }
+    }
+
+    // Info button loading
+    &.bg-info,
+    &[color='info'] {
+      .q-spinner {
+        color: white !important;
+      }
+    }
+
+    // Outline buttons - use theme colors
+    &.q-btn--outline {
+      .q-spinner {
+        color: hsl(var(--primary)) !important;
+      }
+
+      &[color='positive'] .q-spinner {
+        color: hsl(142, 76%, 36%) !important;
+      }
+
+      &[color='negative'] .q-spinner {
+        color: hsl(0, 84%, 60%) !important;
+      }
+
+      &[color='warning'] .q-spinner {
+        color: hsl(35, 91%, 62%) !important;
+      }
+
+      &[color='info'] .q-spinner {
+        color: hsl(217, 91%, 60%) !important;
+      }
+    }
+
+    // Flat buttons - use theme colors
+    &.q-btn--flat {
+      .q-spinner {
+        color: hsl(var(--primary)) !important;
+      }
+
+      &[color='positive'] .q-spinner {
+        color: hsl(142, 76%, 36%) !important;
+      }
+
+      &[color='negative'] .q-spinner {
+        color: hsl(0, 84%, 60%) !important;
+      }
+
+      &[color='warning'] .q-spinner {
+        color: hsl(35, 91%, 62%) !important;
+      }
+
+      &[color='info'] .q-spinner {
+        color: hsl(217, 91%, 60%) !important;
+      }
+    }
+
+    // Dark mode adjustments
+    .dark & {
+      // For dark mode, ensure contrast on dark backgrounds
+      &.bg-primary .q-spinner {
+        color: hsl(var(--primary-foreground)) !important;
+      }
+
+      &.bg-secondary .q-spinner {
+        color: hsl(var(--secondary-foreground)) !important;
+      }
+
+      // Outline and flat buttons in dark mode
+      &.q-btn--outline .q-spinner,
+      &.q-btn--flat .q-spinner {
+        color: hsl(var(--primary)) !important;
+      }
+    }
+  }
+}
+
+// Enhanced spinner styling with proper contrast everywhere
 .q-spinner {
   color: hsl(var(--primary)) !important;
 
-  &--positive {
-    color: hsl(var(--success)) !important;
+  // When inside a loading button, use appropriate colors
+  .q-btn--loading & {
+    // Default to white for most colored buttons
+    color: white !important;
   }
 
-  &--negative {
-    color: hsl(var(--error)) !important;
+  // When inside outline or flat buttons, use theme colors
+  .q-btn--outline & {
+    color: hsl(var(--primary)) !important;
   }
 
-  &--warning {
-    color: hsl(var(--warning)) !important;
+  .q-btn--flat & {
+    color: hsl(var(--primary)) !important;
   }
 
-  &--info {
-    color: hsl(var(--info)) !important;
+  // Standalone spinner color variants
+  &[color='primary'] {
+    color: hsl(var(--primary)) !important;
+  }
+
+  &[color='secondary'] {
+    color: hsl(var(--secondary)) !important;
+  }
+
+  &[color='positive'] {
+    color: hsl(142, 76%, 36%) !important;
+  }
+
+  &[color='negative'] {
+    color: hsl(0, 84%, 60%) !important;
+  }
+
+  &[color='warning'] {
+    color: hsl(35, 91%, 62%) !important;
+  }
+
+  &[color='info'] {
+    color: hsl(217, 91%, 60%) !important;
   }
 }
 
