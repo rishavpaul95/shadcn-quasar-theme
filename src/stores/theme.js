@@ -86,8 +86,10 @@ export const useThemeStore = defineStore('theme', {
         root.style.setProperty('--q-primary', 'hsl(210, 40%, 98%)') // light foreground
         root.style.setProperty('--q-secondary', 'hsl(215, 20.2%, 65.1%)') // muted foreground for dark mode
         root.style.setProperty('--q-accent', 'hsl(217.2, 32.6%, 17.5%)') // dark accent
-        root.style.setProperty('--q-positive', 'hsl(142, 76%, 36%)') // success green
-        root.style.setProperty('--q-negative', 'hsl(0, 62.8%, 30.6%)') // error red
+        root.style.setProperty('--q-positive', 'hsl(142, 76%, 45%)') // success green (brighter for dark)
+        root.style.setProperty('--q-negative', 'hsl(0, 62.8%, 45%)') // error red (adjusted for dark)
+        root.style.setProperty('--q-warning', 'hsl(48, 96%, 60%)') // warning yellow (brighter for dark)
+        root.style.setProperty('--q-info', 'hsl(198, 93%, 70%)') // info blue (brighter for dark)
         root.style.setProperty('--q-dark', 'hsl(222.2, 84%, 4.9%)') // dark background
       } else {
         // Light mode shadcn colors
@@ -96,6 +98,8 @@ export const useThemeStore = defineStore('theme', {
         root.style.setProperty('--q-accent', 'hsl(210, 40%, 96%)') // light accent background
         root.style.setProperty('--q-positive', 'hsl(142, 76%, 36%)') // success green
         root.style.setProperty('--q-negative', 'hsl(0, 84.2%, 60.2%)') // error red
+        root.style.setProperty('--q-warning', 'hsl(48, 96%, 53%)') // warning yellow
+        root.style.setProperty('--q-info', 'hsl(198, 93%, 60%)') // info blue
         root.style.setProperty('--q-dark', 'hsl(222.2, 47.4%, 11.2%)') // dark for buttons
       }
     },

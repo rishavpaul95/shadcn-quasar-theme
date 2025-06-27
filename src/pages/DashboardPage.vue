@@ -2,7 +2,7 @@
   <q-page class="q-pa-lg bg-background">
     <div class="text-h4 q-mb-md text-foreground">Dashboard</div>
 
-    <q-card class="q-mb-md shadcn-card">
+    <q-card class="q-mb-md">
       <q-card-section>
         <div class="text-h6 text-foreground">
           Welcome to your Dashboard,
@@ -29,7 +29,7 @@
 
     <div class="row q-gutter-md">
       <div class="col-md-3 col-sm-6 col-xs-12">
-        <q-card class="shadcn-card stats-card">
+        <q-card class="stats-card">
           <q-card-section class="text-center">
             <q-icon name="people" size="3rem" class="stats-icon" />
             <div class="text-h6 q-mt-sm text-foreground">Users</div>
@@ -39,7 +39,7 @@
       </div>
 
       <div class="col-md-3 col-sm-6 col-xs-12">
-        <q-card class="shadcn-card stats-card">
+        <q-card class="stats-card">
           <q-card-section class="text-center">
             <q-icon name="shopping_cart" size="3rem" class="stats-icon" />
             <div class="text-h6 q-mt-sm text-foreground">Orders</div>
@@ -49,7 +49,7 @@
       </div>
 
       <div class="col-md-3 col-sm-6 col-xs-12">
-        <q-card class="shadcn-card stats-card">
+        <q-card class="stats-card">
           <q-card-section class="text-center">
             <q-icon name="attach_money" size="3rem" color="positive" />
             <div class="text-h6 q-mt-sm text-foreground">Revenue</div>
@@ -59,7 +59,7 @@
       </div>
 
       <div class="col-md-3 col-sm-6 col-xs-12">
-        <q-card class="shadcn-card stats-card">
+        <q-card class="stats-card">
           <q-card-section class="text-center">
             <q-icon name="trending_up" size="3rem" color="info" />
             <div class="text-h6 q-mt-sm text-foreground">Growth</div>
@@ -88,11 +88,13 @@ const refreshUserData = async () => {
       $q.notify({
         type: 'positive',
         message: 'User data refreshed successfully',
+        position: 'top',
       })
     } else {
       $q.notify({
         type: 'negative',
         message: 'Failed to refresh user data',
+        position: 'top',
       })
     }
   } catch (error) {
@@ -100,6 +102,7 @@ const refreshUserData = async () => {
     $q.notify({
       type: 'negative',
       message: 'Error refreshing user data',
+      position: 'top',
     })
   } finally {
     refreshing.value = false

@@ -59,6 +59,7 @@ const logout = () => {
   $q.notify({
     type: 'positive',
     message: 'Logged out successfully',
+    position: 'top',
   })
 
   // Redirect to login

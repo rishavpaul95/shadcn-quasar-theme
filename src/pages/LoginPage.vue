@@ -1,6 +1,6 @@
 <template>
   <div class="min-h-screen bg-background flex items-center justify-center p-4">
-    <q-card class="w-full max-w-md shadcn-card">
+    <q-card class="w-full max-w-md">
       <q-card-section class="text-center space-y-2">
         <div class="text-2xl font-semibold text-foreground">Sign in</div>
         <div class="text-muted">Sign in below to access your account</div>
@@ -16,7 +16,6 @@
               type="email"
               :rules="emailRules"
               lazy-rules
-              class="shadcn-input"
               placeholder="Enter your email"
             />
           </div>
@@ -30,7 +29,6 @@
               type="password"
               :rules="passwordRules"
               lazy-rules
-              class="shadcn-input"
               placeholder="Enter your password"
             />
           </div>
@@ -50,7 +48,7 @@
       <q-card-section class="text-center pt-0">
         <div class="text-muted">
           Don't have an account yet?
-          <a @click="$router.push({ name: 'register' })" class="shadcn-link ml-1"> Sign up. </a>
+          <a @click="$router.push({ name: 'register' })" class="ml-1"> Sign up. </a>
         </div>
       </q-card-section>
     </q-card>
@@ -94,6 +92,7 @@ export default {
         $q.notify({
           type: 'negative',
           message: 'Please fix the form errors before submitting',
+          position: 'top',
         })
         return
       }
@@ -115,6 +114,7 @@ export default {
         $q.notify({
           type: 'positive',
           message: 'Login successful',
+          position: 'top',
         })
 
         // Redirect to home page or previous page
@@ -136,6 +136,7 @@ export default {
         $q.notify({
           type: 'negative',
           message: errorMessage,
+          position: 'top',
         })
       } finally {
         loading.value = false

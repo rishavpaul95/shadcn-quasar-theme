@@ -23,6 +23,16 @@
   --input: 214.3 31.8% 91.4%;
   --ring: 222.2 84% 4.9%;
   --radius: 0.5rem;
+
+  // Semantic colors for notifications, dialogs, etc.
+  --success: 142 76% 36%; // Green
+  --success-foreground: 355.7 100% 97.3%;
+  --warning: 48 96% 53%; // Yellow/Orange
+  --warning-foreground: 20 14.3% 4.1%;
+  --info: 198 93% 60%; // Blue
+  --info-foreground: 355.7 100% 97.3%;
+  --error: 0 84.2% 60.2%; // Red (same as destructive)
+  --error-foreground: 210 40% 98%;
 }
 
 .dark {
@@ -45,6 +55,16 @@
   --border: 217.2 32.6% 17.5%;
   --input: 217.2 32.6% 17.5%;
   --ring: 212.7 26.8% 83.9%;
+
+  // Dark mode semantic colors
+  --success: 142 76% 45%; // Slightly brighter green
+  --success-foreground: 355.7 100% 97.3%;
+  --warning: 48 96% 60%; // Brighter yellow
+  --warning-foreground: 20 14.3% 4.1%;
+  --info: 198 93% 70%; // Brighter blue
+  --info-foreground: 355.7 100% 97.3%;
+  --error: 0 62.8% 45%; // Adjusted red for dark mode
+  --error-foreground: 210 40% 98%;
 }
 
 // Override Quasar component styles with shadcn/ui aesthetics
@@ -501,23 +521,273 @@ body {
 .q-notification {
   border-radius: var(--radius) !important;
   border: 1px solid hsl(var(--border)) !important;
-  background-color: hsl(var(--card)) !important;
-  color: hsl(var(--card-foreground)) !important;
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 500 !important;
   box-shadow:
     0 4px 6px -1px rgb(0 0 0 / 0.1),
     0 2px 4px -2px rgb(0 0 0 / 0.1) !important;
 
+  // Default notification
+  background-color: hsl(var(--card)) !important;
+  color: hsl(var(--card-foreground)) !important;
+  border-color: hsl(var(--border)) !important;
+
+  // Success notifications
   &--positive {
-    background-color: hsl(142 76% 36%) !important;
-    color: hsl(355.7 100% 97.3%) !important;
-    border-color: hsl(142 76% 36%) !important;
+    background-color: hsl(var(--success)) !important;
+    color: hsl(var(--success-foreground)) !important;
+    border-color: hsl(var(--success)) !important;
+  }
+
+  // Error notifications
+  &--negative {
+    background-color: hsl(var(--error)) !important;
+    color: hsl(var(--error-foreground)) !important;
+    border-color: hsl(var(--error)) !important;
+  }
+
+  // Warning notifications
+  &--warning {
+    background-color: hsl(var(--warning)) !important;
+    color: hsl(var(--warning-foreground)) !important;
+    border-color: hsl(var(--warning)) !important;
+  }
+
+  // Info notifications
+  &--info {
+    background-color: hsl(var(--info)) !important;
+    color: hsl(var(--info-foreground)) !important;
+    border-color: hsl(var(--info)) !important;
+  }
+
+  .q-icon {
+    color: inherit !important;
+  }
+}
+
+// Dialog overrides for shadcn/ui style
+.q-dialog {
+  .q-card {
+    background-color: hsl(var(--card)) !important;
+    color: hsl(var(--card-foreground)) !important;
+    border: 1px solid hsl(var(--border)) !important;
+    border-radius: calc(var(--radius) + 4px) !important;
+    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25) !important;
+  }
+
+  .q-card-section {
+    font-family: 'Inter', sans-serif !important;
+  }
+
+  .q-card__actions {
+    .q-btn {
+      font-family: 'Inter', sans-serif !important;
+      font-weight: 500 !important;
+    }
+  }
+}
+
+// Alert/Banner components
+.q-banner {
+  border-radius: var(--radius) !important;
+  border: 1px solid hsl(var(--border)) !important;
+  font-family: 'Inter', sans-serif !important;
+
+  &--positive {
+    background-color: hsl(var(--success) / 0.1) !important;
+    color: hsl(var(--success)) !important;
+    border-color: hsl(var(--success) / 0.3) !important;
   }
 
   &--negative {
-    background-color: hsl(var(--destructive)) !important;
-    color: hsl(var(--destructive-foreground)) !important;
-    border-color: hsl(var(--destructive)) !important;
+    background-color: hsl(var(--error) / 0.1) !important;
+    color: hsl(var(--error)) !important;
+    border-color: hsl(var(--error) / 0.3) !important;
   }
+
+  &--warning {
+    background-color: hsl(var(--warning) / 0.1) !important;
+    color: hsl(var(--warning)) !important;
+    border-color: hsl(var(--warning) / 0.3) !important;
+  }
+
+  &--info {
+    background-color: hsl(var(--info) / 0.1) !important;
+    color: hsl(var(--info)) !important;
+    border-color: hsl(var(--info) / 0.3) !important;
+  }
+}
+
+// Progress bars
+.q-linear-progress {
+  background-color: hsl(var(--muted)) !important;
+
+  .q-linear-progress__track {
+    background-color: hsl(var(--primary)) !important;
+
+    &.bg-positive {
+      background-color: hsl(var(--success)) !important;
+    }
+
+    &.bg-negative {
+      background-color: hsl(var(--error)) !important;
+    }
+
+    &.bg-warning {
+      background-color: hsl(var(--warning)) !important;
+    }
+
+    &.bg-info {
+      background-color: hsl(var(--info)) !important;
+    }
+  }
+}
+
+// Circular progress
+.q-circular-progress {
+  .q-circular-progress__text {
+    color: hsl(var(--foreground)) !important;
+    font-family: 'Inter', sans-serif !important;
+  }
+}
+
+// Chips
+.q-chip {
+  background-color: hsl(var(--muted)) !important;
+  color: hsl(var(--muted-foreground)) !important;
+  border-radius: calc(var(--radius) - 2px) !important;
+  font-family: 'Inter', sans-serif !important;
+
+  &--positive {
+    background-color: hsl(var(--success) / 0.1) !important;
+    color: hsl(var(--success)) !important;
+  }
+
+  &--negative {
+    background-color: hsl(var(--error) / 0.1) !important;
+    color: hsl(var(--error)) !important;
+  }
+
+  &--warning {
+    background-color: hsl(var(--warning) / 0.1) !important;
+    color: hsl(var(--warning)) !important;
+  }
+
+  &--info {
+    background-color: hsl(var(--info) / 0.1) !important;
+    color: hsl(var(--info)) !important;
+  }
+}
+
+// Badges
+.q-badge {
+  background-color: hsl(var(--primary)) !important;
+  color: hsl(var(--primary-foreground)) !important;
+  font-family: 'Inter', sans-serif !important;
+  border-radius: calc(var(--radius) - 2px) !important;
+
+  &--positive {
+    background-color: hsl(var(--success)) !important;
+    color: hsl(var(--success-foreground)) !important;
+  }
+
+  &--negative {
+    background-color: hsl(var(--error)) !important;
+    color: hsl(var(--error-foreground)) !important;
+  }
+
+  &--warning {
+    background-color: hsl(var(--warning)) !important;
+    color: hsl(var(--warning-foreground)) !important;
+  }
+
+  &--info {
+    background-color: hsl(var(--info)) !important;
+    color: hsl(var(--info-foreground)) !important;
+  }
+}
+
+// Loading spinners
+.q-spinner {
+  color: hsl(var(--primary)) !important;
+
+  &--positive {
+    color: hsl(var(--success)) !important;
+  }
+
+  &--negative {
+    color: hsl(var(--error)) !important;
+  }
+
+  &--warning {
+    color: hsl(var(--warning)) !important;
+  }
+
+  &--info {
+    color: hsl(var(--info)) !important;
+  }
+}
+
+// Position utilities
+.absolute {
+  position: absolute !important;
+}
+
+.relative {
+  position: relative !important;
+}
+
+.top-0 {
+  top: 0 !important;
+}
+
+.right-0 {
+  right: 0 !important;
+}
+
+.z-50 {
+  z-index: 50 !important;
+}
+
+// Transition utilities
+.transition-all {
+  transition: all 0.2s ease-in-out !important;
+}
+
+.transition-opacity {
+  transition: opacity 0.2s ease-in-out !important;
+}
+
+// Hover utilities
+.hover\:bg-accent:hover {
+  background-color: hsl(var(--accent)) !important;
+}
+
+.hover\:opacity-80:hover {
+  opacity: 0.8 !important;
+}
+
+// Layout container utilities
+.q-layout {
+  background-color: hsl(var(--background)) !important;
+  color: hsl(var(--foreground)) !important;
+}
+
+.q-page-container {
+  background-color: hsl(var(--background)) !important;
+}
+
+// Tooltip styling for popover
+.bg-popover {
+  background-color: hsl(var(--popover)) !important;
+}
+
+.text-popover-foreground {
+  color: hsl(var(--popover-foreground)) !important;
+}
+
+.border-border {
+  border-color: hsl(var(--border)) !important;
 }
 
 // Spacing utilities (inspired by Tailwind)

@@ -1,18 +1,17 @@
 <template>
-  <q-page class="flex flex-center column q-gutter-md">
-    <q-card class="themed-card q-pa-xl text-center" style="max-width: 600px">
-      <div class="text-h4 themed-text-primary q-mb-md">Welcome to Your Dashboard!</div>
-      <div class="text-subtitle1 themed-text-secondary q-mb-lg">
-        You are successfully authenticated and ready to explore.
-      </div>
+  <q-page class="flex items-center justify-center min-h-screen p-4">
+    <q-card class="p-6 text-center max-w-lg w-full">
+      <div class="text-2xl font-semibold text-foreground mb-4">Welcome to Your Dashboard!</div>
+      <div class="text-muted mb-6">You are successfully authenticated and ready to explore.</div>
 
-      <div class="row q-gutter-md justify-center">
+      <div class="flex justify-center">
         <q-btn
           color="primary"
           label="Go to Dashboard"
           @click="$router.push({ name: 'dashboard' })"
-          rounded
           size="lg"
+          unelevated
+          class="font-medium"
         />
       </div>
     </q-card>

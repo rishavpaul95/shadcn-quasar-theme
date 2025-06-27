@@ -15,7 +15,7 @@ $accent: #f1f5f9; // hsl(210, 40%, 96%) - light accent(& Sass) Variables
 // shadcn/ui inspired color palette
 // Primary colors based on shadcn/ui design system
 $primary: #1a1a1a; // hsl(222.2, 47.4%, 11.2%) - dark primary
-$secondary: #f1f5f9; // hsl(210, 40%, 96%) - light secondary
+$secondary: #64748b; // hsl(215.4, 16.3%, 46.9%) - muted foreground with good contrast
 $accent: #f1f5f9; // hsl(210, 40%, 96%) - light accent
 
 $dark: #1a1a1a; // hsl(222.2, 47.4%, 11.2%) - consistent dark
@@ -23,8 +23,8 @@ $dark-page: #0a0a0a; // hsl(222.2, 84%, 4.9%) - dark background
 
 $positive: #16a34a; // hsl(142, 76%, 36%) - success green
 $negative: #dc2626; // hsl(0, 84.2%, 60.2%) - error red
-$info: #0ea5e9; // blue info color
-$warning: #eab308; // yellow warning color
+$info: #0ea5e9; // hsl(198, 93%, 60%) - info blue
+$warning: #eab308; // hsl(48, 96%, 53%) - warning yellow
 
 // Dark Theme Colors for shadcn/ui consistency
 $surface-dark: #0a0a0a; // hsl(222.2, 84%, 4.9%)

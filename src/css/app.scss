@@ -43,16 +43,6 @@
   }
 }
 
-.auth-background {
-  min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  transition: background 0.3s ease;
-}
-
 // Global theme styles
 body {
   transition: var(--theme-transition);
@@ -70,10 +60,6 @@ html.dark {
 
   .themed-text-secondary {
     color: var(--text-secondary-dark);
-  }
-
-  .auth-background {
-    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
   }
 }
 

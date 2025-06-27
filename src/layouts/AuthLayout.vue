@@ -1,17 +1,18 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
+  <q-layout view="lHh Lpr lFf" class="bg-background">
     <q-page-container>
-      <div class="auth-background">
+      <div class="min-h-screen bg-background flex flex-col relative">
         <div class="absolute top-0 right-0 z-50 p-4">
           <q-btn
             flat
             round
             :icon="themeStore.themeIcon"
-            color="white"
+            class="text-foreground hover:bg-accent transition-all"
             @click="themeStore.toggleTheme"
-            class="hover:opacity-80 transition-opacity"
           >
-            <q-tooltip>Toggle {{ themeStore.isDarkMode ? 'Light' : 'Dark' }} Mode</q-tooltip>
+            <q-tooltip class="bg-popover text-popover-foreground border border-border">
+              Toggle {{ themeStore.isDarkMode ? 'Light' : 'Dark' }} Mode
+            </q-tooltip>
           </q-btn>
         </div>
         <router-view />

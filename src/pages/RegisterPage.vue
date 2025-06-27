@@ -1,6 +1,6 @@
 <template>
   <div class="min-h-screen bg-background flex items-center justify-center p-4">
-    <q-card class="w-full max-w-md shadcn-card">
+    <q-card class="w-full max-w-md">
       <q-card-section class="text-center space-y-2">
         <div class="text-2xl font-semibold text-foreground">Create Account</div>
         <div class="text-muted">Sign up to get started with your account</div>
@@ -17,7 +17,6 @@
                 type="text"
                 :rules="nameRules"
                 lazy-rules
-                class="shadcn-input"
                 placeholder="Enter your first name"
               />
             </div>
@@ -30,7 +29,6 @@
                 type="text"
                 :rules="nameRules"
                 lazy-rules
-                class="shadcn-input"
                 placeholder="Enter your last name"
               />
             </div>
@@ -45,7 +43,6 @@
               type="email"
               :rules="emailRules"
               lazy-rules
-              class="shadcn-input"
               placeholder="Enter your email"
             />
           </div>
@@ -59,7 +56,6 @@
               type="password"
               :rules="passwordRules"
               lazy-rules
-              class="shadcn-input"
               placeholder="Enter your password"
             />
           </div>
@@ -73,7 +69,6 @@
               type="password"
               :rules="confirmPasswordRules"
               lazy-rules
-              class="shadcn-input"
               placeholder="Confirm your password"
             />
           </div>
@@ -93,7 +88,7 @@
       <q-card-section class="text-center pt-0">
         <div class="text-muted">
           Already have an account?
-          <a @click="$router.push({ name: 'login' })" class="shadcn-link ml-1"> Sign in. </a>
+          <a @click="$router.push({ name: 'login' })" class="ml-1"> Sign in. </a>
         </div>
       </q-card-section>
     </q-card>
@@ -153,6 +148,7 @@ export default {
         $q.notify({
           type: 'negative',
           message: 'Please fix the form errors before submitting',
+          position: 'top',
         })
         return
       }
@@ -176,6 +172,7 @@ export default {
         $q.notify({
           type: 'positive',
           message: 'Account created successfully! Welcome!',
+          position: 'top',
         })
 
         // Redirect to home page
@@ -199,6 +196,7 @@ export default {
         $q.notify({
           type: 'negative',
           message: errorMessage,
+          position: 'top',
         })
       } finally {
         loading.value = false
