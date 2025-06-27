@@ -244,6 +244,95 @@ body {
   font-family: 'Inter', sans-serif !important;
 }
 
+// Global page styling
+.q-page {
+  background-color: hsl(var(--background)) !important;
+  color: hsl(var(--foreground)) !important;
+  font-family: 'Inter', sans-serif !important;
+}
+
+// Global text color utilities
+.text-foreground {
+  color: hsl(var(--foreground)) !important;
+}
+
+.text-muted {
+  color: hsl(var(--muted-foreground)) !important;
+}
+
+.text-primary-shadcn {
+  color: hsl(var(--primary)) !important;
+}
+
+.text-secondary-shadcn {
+  color: hsl(var(--muted-foreground)) !important;
+}
+
+// Global background utilities
+.bg-background {
+  background-color: hsl(var(--background)) !important;
+}
+
+.bg-card {
+  background-color: hsl(var(--card)) !important;
+}
+
+.bg-muted {
+  background-color: hsl(var(--muted)) !important;
+}
+
+// Stats cards global styling
+.stats-card {
+  transition: all 0.2s ease-in-out !important;
+  cursor: pointer !important;
+
+  &:hover {
+    transform: translateY(-2px) !important;
+    box-shadow:
+      0 4px 6px -1px rgb(0 0 0 / 0.1),
+      0 2px 4px -2px rgb(0 0 0 / 0.1) !important;
+  }
+}
+
+// Stats icons global styling
+.stats-icon {
+  color: hsl(var(--muted-foreground)) !important;
+  transition: all 0.2s ease-in-out !important;
+}
+
+.stats-card:hover .stats-icon {
+  color: hsl(var(--foreground)) !important;
+  transform: scale(1.05) !important;
+}
+
+// Global typography overrides
+.text-h1,
+.text-h2,
+.text-h3,
+.text-h4,
+.text-h5,
+.text-h6 {
+  color: hsl(var(--foreground)) !important;
+  font-family: 'Inter', sans-serif !important;
+}
+
+.text-subtitle1,
+.text-subtitle2 {
+  color: hsl(var(--muted-foreground)) !important;
+  font-family: 'Inter', sans-serif !important;
+}
+
+.text-body1,
+.text-body2 {
+  color: hsl(var(--foreground)) !important;
+  font-family: 'Inter', sans-serif !important;
+}
+
+.text-caption {
+  color: hsl(var(--muted-foreground)) !important;
+  font-family: 'Inter', sans-serif !important;
+}
+
 // Typography overrides
 .text-h5 {
   font-family: 'Inter', sans-serif !important;
@@ -286,18 +375,6 @@ body {
   }
 }
 
-.text-muted {
-  color: hsl(var(--muted-foreground)) !important;
-}
-
-.text-primary-shadcn {
-  color: hsl(var(--primary)) !important;
-}
-
-.text-secondary-shadcn {
-  color: hsl(var(--muted-foreground)) !important;
-}
-
 // Link styles
 .shadcn-link {
   color: hsl(var(--primary));
@@ -315,6 +392,109 @@ body {
 .q-dark {
   background-color: hsl(var(--background)) !important;
   color: hsl(var(--foreground)) !important;
+}
+
+// Global icon theming - make all icons follow the theme
+.q-icon {
+  transition: color 0.2s ease-in-out !important;
+
+  // Default icon colors based on theme
+  &:not([class*='text-']):not([class*='color-']) {
+    color: hsl(var(--muted-foreground)) !important;
+  }
+
+  // Primary icons
+  &.text-primary,
+  &[color='primary'] {
+    color: hsl(var(--primary)) !important;
+  }
+
+  // Secondary icons
+  &.text-secondary,
+  &[color='secondary'] {
+    color: hsl(var(--muted-foreground)) !important;
+  }
+
+  // Positive/success icons
+  &.text-positive,
+  &[color='positive'] {
+    color: hsl(142, 76%, 36%) !important;
+  }
+
+  // Negative/error icons
+  &.text-negative,
+  &[color='negative'] {
+    color: hsl(var(--destructive)) !important;
+  }
+
+  // Info icons
+  &.text-info,
+  &[color='info'] {
+    color: hsl(198, 93%, 60%) !important;
+  }
+
+  // Warning icons
+  &.text-warning,
+  &[color='warning'] {
+    color: hsl(48, 96%, 53%) !important;
+  }
+
+  // Accent icons
+  &.text-accent,
+  &[color='accent'] {
+    color: hsl(var(--accent-foreground)) !important;
+  }
+
+  // Theme-aware icon classes
+  &.text-foreground {
+    color: hsl(var(--foreground)) !important;
+  }
+
+  &.text-muted {
+    color: hsl(var(--muted-foreground)) !important;
+  }
+
+  // Dark mode specific adjustments
+  .dark & {
+    &.text-secondary,
+    &[color='secondary'] {
+      color: hsl(215, 20.2%, 65.1%) !important;
+    }
+
+    &.text-positive,
+    &[color='positive'] {
+      color: hsl(142, 76%, 45%) !important; // Slightly brighter green for dark mode
+    }
+
+    &.text-info,
+    &[color='info'] {
+      color: hsl(198, 93%, 70%) !important; // Brighter blue for dark mode
+    }
+  }
+}
+
+// Toolbar and header icons
+.q-toolbar .q-icon,
+.q-header .q-icon {
+  color: hsl(var(--foreground)) !important;
+
+  &:hover {
+    color: hsl(var(--primary)) !important;
+  }
+}
+
+// Button icons inherit button colors
+.q-btn .q-icon {
+  color: inherit !important;
+}
+
+// Card icons get subtle styling
+.q-card .q-icon:not(.q-btn .q-icon) {
+  color: hsl(var(--muted-foreground)) !important;
+
+  &:hover {
+    color: hsl(var(--foreground)) !important;
+  }
 }
 
 // Notification overrides for shadcn/ui style
@@ -338,4 +518,149 @@ body {
     color: hsl(var(--destructive-foreground)) !important;
     border-color: hsl(var(--destructive)) !important;
   }
+}
+
+// Spacing utilities (inspired by Tailwind)
+.space-y-2 > * + * {
+  margin-top: 0.5rem !important;
+}
+
+.space-y-4 > * + * {
+  margin-top: 1rem !important;
+}
+
+.space-y-6 > * + * {
+  margin-top: 1.5rem !important;
+}
+
+.space-x-2 > * + * {
+  margin-left: 0.5rem !important;
+}
+
+.space-x-4 > * + * {
+  margin-left: 1rem !important;
+}
+
+// Grid utilities
+.grid {
+  display: grid !important;
+}
+
+.grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+}
+
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}
+
+.grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+}
+
+.grid-cols-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+}
+
+.gap-2 {
+  gap: 0.5rem !important;
+}
+
+.gap-4 {
+  gap: 1rem !important;
+}
+
+.gap-6 {
+  gap: 1.5rem !important;
+}
+
+// Flexbox utilities
+.flex {
+  display: flex !important;
+}
+
+.flex-col {
+  flex-direction: column !important;
+}
+
+.items-center {
+  align-items: center !important;
+}
+
+.justify-center {
+  justify-content: center !important;
+}
+
+.justify-between {
+  justify-content: space-between !important;
+}
+
+// Sizing utilities
+.w-full {
+  width: 100% !important;
+}
+
+.h-full {
+  height: 100% !important;
+}
+
+.min-h-screen {
+  min-height: 100vh !important;
+}
+
+.max-w-md {
+  max-width: 28rem !important;
+}
+
+.max-w-lg {
+  max-width: 32rem !important;
+}
+
+.max-w-xl {
+  max-width: 36rem !important;
+}
+
+// Padding and margin utilities
+.p-4 {
+  padding: 1rem !important;
+}
+
+.p-6 {
+  padding: 1.5rem !important;
+}
+
+.pt-0 {
+  padding-top: 0 !important;
+}
+
+.mt-6 {
+  margin-top: 1.5rem !important;
+}
+
+.ml-1 {
+  margin-left: 0.25rem !important;
+}
+
+// Font weight utilities
+.font-medium {
+  font-weight: 500 !important;
+}
+
+.font-semibold {
+  font-weight: 600 !important;
+}
+
+.font-bold {
+  font-weight: 700 !important;
+}
+
+// Font size utilities
+.text-sm {
+  font-size: 0.875rem !important;
+  line-height: 1.25rem !important;
+}
+
+.text-2xl {
+  font-size: 1.5rem !important;
+  line-height: 2rem !important;
 }

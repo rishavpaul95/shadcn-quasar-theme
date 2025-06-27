@@ -1,18 +1,18 @@
 <template>
-  <q-page class="q-pa-lg">
-    <div class="text-h4 q-mb-md">Dashboard</div>
+  <q-page class="q-pa-lg bg-background">
+    <div class="text-h4 q-mb-md text-foreground">Dashboard</div>
 
-    <q-card class="q-mb-md">
+    <q-card class="q-mb-md shadcn-card">
       <q-card-section>
-        <div class="text-h6">
+        <div class="text-h6 text-foreground">
           Welcome to your Dashboard,
           {{ authStore.user?.fullName || authStore.user?.username || 'User' }}!
         </div>
-        <p>This is a protected route that requires authentication to access.</p>
+        <p class="text-muted">This is a protected route that requires authentication to access.</p>
         <div v-if="authStore.user" class="q-mt-md">
-          <p><strong>Username:</strong> {{ authStore.user.username }}</p>
-          <p><strong>Email:</strong> {{ authStore.user.email }}</p>
-          <p><strong>User ID:</strong> {{ authStore.user.id }}</p>
+          <p class="text-foreground"><strong>Username:</strong> {{ authStore.user.username }}</p>
+          <p class="text-foreground"><strong>Email:</strong> {{ authStore.user.email }}</p>
+          <p class="text-foreground"><strong>User ID:</strong> {{ authStore.user.id }}</p>
         </div>
 
         <div class="q-mt-md">
@@ -21,6 +21,7 @@
             label="Refresh User Data"
             @click="refreshUserData"
             :loading="refreshing"
+            unelevated
           />
         </div>
       </q-card-section>
@@ -28,41 +29,41 @@
 
     <div class="row q-gutter-md">
       <div class="col-md-3 col-sm-6 col-xs-12">
-        <q-card>
+        <q-card class="shadcn-card stats-card">
           <q-card-section class="text-center">
-            <q-icon name="people" size="3rem" color="primary" />
-            <div class="text-h6 q-mt-sm">Users</div>
-            <div class="text-subtitle2">1,234</div>
+            <q-icon name="people" size="3rem" class="stats-icon" />
+            <div class="text-h6 q-mt-sm text-foreground">Users</div>
+            <div class="text-subtitle2 text-muted">1,234</div>
           </q-card-section>
         </q-card>
       </div>
 
       <div class="col-md-3 col-sm-6 col-xs-12">
-        <q-card>
+        <q-card class="shadcn-card stats-card">
           <q-card-section class="text-center">
-            <q-icon name="shopping_cart" size="3rem" color="secondary" />
-            <div class="text-h6 q-mt-sm">Orders</div>
-            <div class="text-subtitle2">567</div>
+            <q-icon name="shopping_cart" size="3rem" class="stats-icon" />
+            <div class="text-h6 q-mt-sm text-foreground">Orders</div>
+            <div class="text-subtitle2 text-muted">567</div>
           </q-card-section>
         </q-card>
       </div>
 
       <div class="col-md-3 col-sm-6 col-xs-12">
-        <q-card>
+        <q-card class="shadcn-card stats-card">
           <q-card-section class="text-center">
             <q-icon name="attach_money" size="3rem" color="positive" />
-            <div class="text-h6 q-mt-sm">Revenue</div>
-            <div class="text-subtitle2">$12,345</div>
+            <div class="text-h6 q-mt-sm text-foreground">Revenue</div>
+            <div class="text-subtitle2 text-muted">$12,345</div>
           </q-card-section>
         </q-card>
       </div>
 
       <div class="col-md-3 col-sm-6 col-xs-12">
-        <q-card>
+        <q-card class="shadcn-card stats-card">
           <q-card-section class="text-center">
             <q-icon name="trending_up" size="3rem" color="info" />
-            <div class="text-h6 q-mt-sm">Growth</div>
-            <div class="text-subtitle2">+15%</div>
+            <div class="text-h6 q-mt-sm text-foreground">Growth</div>
+            <div class="text-subtitle2 text-muted">+15%</div>
           </q-card-section>
         </q-card>
       </div>

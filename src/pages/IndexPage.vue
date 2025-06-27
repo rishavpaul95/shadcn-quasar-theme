@@ -14,25 +14,9 @@
           rounded
           size="lg"
         />
-        <q-btn
-          color="secondary"
-          label="Settings"
-          @click="showThemeSettings = true"
-          rounded
-          outline
-          size="lg"
-        />
       </div>
     </q-card>
-
-    <!-- Theme Settings Dialog -->
-    <ThemeSettings v-model="showThemeSettings" />
   </q-page>
 </template>
 
-<script setup>
-import { ref } from 'vue'
-import ThemeSettings from 'components/ThemeSettings.vue'
-
-const showThemeSettings = ref(false)
-</script>
+<script setup></script>

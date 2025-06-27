@@ -17,18 +17,6 @@
           flat
           dense
           round
-          icon="palette"
-          aria-label="Theme Settings"
-          @click="showThemeSettings = true"
-          class="q-mr-sm theme-btn"
-        >
-          <q-tooltip class="shadcn-tooltip">Theme Settings</q-tooltip>
-        </q-btn>
-
-        <q-btn
-          flat
-          dense
-          round
           icon="logout"
           aria-label="Logout"
           @click="logout"
@@ -49,9 +37,6 @@
     <q-page-container>
       <router-view />
     </q-page-container>
-
-    <!-- Theme Settings Dialog -->
-    <ThemeSettings v-model="showThemeSettings" />
   </q-layout>
 </template>
 
@@ -61,13 +46,11 @@ import { useRouter } from 'vue-router'
 import { useQuasar } from 'quasar'
 import { useAuthStore } from 'src/stores/auth'
 import EssentialLink from 'components/EssentialLink.vue'
-import ThemeSettings from 'components/ThemeSettings.vue'
 import ThemeToggle from 'components/ThemeToggle.vue'
 
 const router = useRouter()
 const $q = useQuasar()
 const authStore = useAuthStore()
-const showThemeSettings = ref(false)
 
 const logout = () => {
   // Use Pinia store to handle logout
@@ -117,16 +100,15 @@ function toggleLeftDrawer() {
 </script>
 
 <style scoped>
-/* Header styling with shadcn/ui theme */
+/* Header and toolbar styling */
 .q-header {
-  background-color: hsl(var(--card)) !important;
+  background-color: hsl(var(--background)) !important;
   border-bottom: 1px solid hsl(var(--border)) !important;
-  box-shadow:
-    0 1px 3px 0 rgb(0 0 0 / 0.1),
-    0 1px 2px -1px rgb(0 0 0 / 0.1) !important;
+  color: hsl(var(--foreground)) !important;
 }
 
 .q-toolbar {
+  background-color: hsl(var(--background)) !important;
   color: hsl(var(--foreground)) !important;
 }
 
@@ -136,16 +118,26 @@ function toggleLeftDrawer() {
   font-family: 'Inter', sans-serif !important;
 }
 
-.text-foreground {
-  color: hsl(var(--foreground)) !important;
-}
-
+/* Theme-aware buttons in header */
 .theme-btn {
   color: hsl(var(--muted-foreground)) !important;
   transition: all 0.2s ease-in-out !important;
 
   &:hover {
     color: hsl(var(--foreground)) !important;
+    background-color: hsl(var(--accent)) !important;
+  }
+
+  .q-icon {
+    color: inherit !important;
+  }
+}
+
+/* Menu button styling */
+.q-btn[aria-label='Menu'] {
+  color: hsl(var(--foreground)) !important;
+
+  &:hover {
     background-color: hsl(var(--accent)) !important;
   }
 }
