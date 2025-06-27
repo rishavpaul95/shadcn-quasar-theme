@@ -4,9 +4,10 @@ import { Dark, LocalStorage } from 'quasar'
 export const useThemeStore = defineStore('theme', {
   state: () => ({
     isDarkMode: false,
-    primaryColor: '#1976D2',
-    secondaryColor: '#26A69A',
-    accentColor: '#9C27B0',
+    // shadcn/ui inspired colors
+    primaryColor: 'hsl(222.2, 47.4%, 11.2%)', // shadcn primary (dark)
+    secondaryColor: 'hsl(215.4, 16.3%, 46.9%)', // shadcn muted foreground (good contrast)
+    accentColor: 'hsl(210, 40%, 96%)', // shadcn accent
   }),
 
   getters: {
@@ -77,11 +78,26 @@ export const useThemeStore = defineStore('theme', {
         htmlElement.classList.remove('dark')
       }
 
-      // Apply custom colors to CSS variables for Quasar compatibility
+      // Apply shadcn/ui colors to Quasar's CSS variables
       const root = document.documentElement
-      root.style.setProperty('--q-primary', this.primaryColor)
-      root.style.setProperty('--q-secondary', this.secondaryColor)
-      root.style.setProperty('--q-accent', this.accentColor)
+
+      if (this.isDarkMode) {
+        // Dark mode shadcn colors
+        root.style.setProperty('--q-primary', 'hsl(210, 40%, 98%)') // light foreground
+        root.style.setProperty('--q-secondary', 'hsl(215, 20.2%, 65.1%)') // muted foreground for dark mode
+        root.style.setProperty('--q-accent', 'hsl(217.2, 32.6%, 17.5%)') // dark accent
+        root.style.setProperty('--q-positive', 'hsl(142, 76%, 36%)') // success green
+        root.style.setProperty('--q-negative', 'hsl(0, 62.8%, 30.6%)') // error red
+        root.style.setProperty('--q-dark', 'hsl(222.2, 84%, 4.9%)') // dark background
+      } else {
+        // Light mode shadcn colors
+        root.style.setProperty('--q-primary', 'hsl(222.2, 47.4%, 11.2%)') // dark primary
+        root.style.setProperty('--q-secondary', 'hsl(215.4, 16.3%, 46.9%)') // muted foreground (good contrast)
+        root.style.setProperty('--q-accent', 'hsl(210, 40%, 96%)') // light accent background
+        root.style.setProperty('--q-positive', 'hsl(142, 76%, 36%)') // success green
+        root.style.setProperty('--q-negative', 'hsl(0, 84.2%, 60.2%)') // error red
+        root.style.setProperty('--q-dark', 'hsl(222.2, 47.4%, 11.2%)') // dark for buttons
+      }
     },
 
     // Update theme colors
@@ -104,12 +120,12 @@ export const useThemeStore = defineStore('theme', {
       })
     },
 
-    // Reset to default theme
+    // Reset to default shadcn/ui theme
     resetTheme() {
       this.isDarkMode = false
-      this.primaryColor = '#1976D2'
-      this.secondaryColor = '#26A69A'
-      this.accentColor = '#9C27B0'
+      this.primaryColor = 'hsl(222.2, 47.4%, 11.2%)'
+      this.secondaryColor = 'hsl(215.4, 16.3%, 46.9%)'
+      this.accentColor = 'hsl(210, 40%, 96%)'
       this.applyTheme()
       this.persistTheme()
     }

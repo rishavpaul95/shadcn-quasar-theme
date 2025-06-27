@@ -80,7 +80,8 @@
 
           <q-btn
             type="submit"
-            class="w-full btn-primary mt-6"
+            class="w-full mt-6"
+            color="primary"
             size="md"
             label="Create Account"
             no-caps

@@ -78,7 +78,19 @@ export default defineConfig((/* ctx */) => {
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-file#framework
     framework: {
-      config: {},
+      config: {
+        brand: {
+          // shadcn/ui inspired colors with proper contrast
+          primary: '#1a1a1a',   // hsl(222.2, 47.4%, 11.2%) - dark primary
+          secondary: '#64748b',  // hsl(215.4, 16.3%, 46.9%) - muted foreground with good contrast
+          accent: '#f1f5f9',     // hsl(210, 40%, 96%) - light accent background
+          dark: '#1a1a1a',       // hsl(222.2, 47.4%, 11.2%) - consistent dark
+          positive: '#16a34a',   // hsl(142, 76%, 36%) - success green
+          negative: '#dc2626',   // hsl(0, 84.2%, 60.2%) - error red
+          info: '#0ea5e9',       // blue info color
+          warning: '#eab308'     // yellow warning color
+        }
+      },
 
       // iconSet: 'material-icons', // Quasar icon set
       // lang: 'en-US', // Quasar language pack
