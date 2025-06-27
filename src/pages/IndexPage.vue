@@ -6,13 +6,6 @@
         You are successfully authenticated and ready to explore.
       </div>
 
-      <img
-        alt="Quasar logo"
-        src="~assets/quasar-logo-vertical.svg"
-        style="width: 200px; height: 200px"
-        class="q-mb-lg"
-      />
-
       <div class="row q-gutter-md justify-center">
         <q-btn
           color="primary"
