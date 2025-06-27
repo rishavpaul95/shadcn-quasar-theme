@@ -1,55 +1,55 @@
 <template>
-  <div class="flex flex-center full-height">
-    <q-card class="q-pa-md shadow-2 themed-card" bordered>
-      <q-card-section class="text-center">
-        <div class="text-h5 text-weight-bold themed-text-primary">Sign in</div>
-        <div class="themed-text-secondary">Sign in below to access your account</div>
+  <div class="min-h-screen bg-background flex items-center justify-center p-4">
+    <q-card class="w-full max-w-md shadcn-card">
+      <q-card-section class="text-center space-y-2">
+        <div class="text-2xl font-semibold text-foreground">Sign in</div>
+        <div class="text-muted">Sign in below to access your account</div>
       </q-card-section>
-      <q-card-section>
-        <q-form @submit="login" ref="loginForm" class="q-gutter-md">
-          <q-input
-            dense
-            outlined
-            v-model="email"
-            label="Email Address"
-            type="email"
-            :rules="emailRules"
-            lazy-rules
-          />
-          <q-input
-            dense
-            outlined
-            class="q-mt-md"
-            v-model="password"
-            type="password"
-            label="Password"
-            :rules="passwordRules"
-            lazy-rules
-          />
+      <q-card-section class="p-6">
+        <q-form @submit="login" ref="loginForm" class="space-y-4">
+          <div class="space-y-2">
+            <label class="text-sm font-medium text-foreground">Email Address</label>
+            <q-input
+              dense
+              outlined
+              v-model="email"
+              type="email"
+              :rules="emailRules"
+              lazy-rules
+              class="shadcn-input"
+              placeholder="Enter your email"
+            />
+          </div>
+
+          <div class="space-y-2">
+            <label class="text-sm font-medium text-foreground">Password</label>
+            <q-input
+              dense
+              outlined
+              v-model="password"
+              type="password"
+              :rules="passwordRules"
+              lazy-rules
+              class="shadcn-input"
+              placeholder="Enter your password"
+            />
+          </div>
 
           <q-btn
             type="submit"
-            style="border-radius: 8px"
-            color="dark"
-            rounded
+            class="w-full btn-primary mt-6"
             size="md"
             label="Sign in"
             no-caps
-            class="full-width q-mt-md"
             :loading="loading"
+            unelevated
           />
         </q-form>
       </q-card-section>
-      <q-card-section class="text-center q-pt-none">
-        <div class="themed-text-secondary">
+      <q-card-section class="text-center pt-0">
+        <div class="text-muted">
           Don't have an account yet?
-          <a
-            @click="$router.push({ name: 'register' })"
-            class="text-weight-bold cursor-pointer themed-link"
-            style="text-decoration: none"
-          >
-            Sign up.
-          </a>
+          <a @click="$router.push({ name: 'register' })" class="shadcn-link ml-1"> Sign up. </a>
         </div>
       </q-card-section>
     </q-card>
@@ -155,15 +155,44 @@ export default {
 </script>
 
 <style scoped>
-.full-height {
-  min-height: 100vh;
+/* Additional custom styles for shadcn/ui theme */
+.space-y-2 > * + * {
+  margin-top: 0.5rem;
 }
 
-.cursor-pointer {
-  cursor: pointer;
+.space-y-4 > * + * {
+  margin-top: 1rem;
 }
 
-.cursor-pointer:hover {
-  text-decoration: underline !important;
+/* Ensure proper text colors */
+.text-foreground {
+  color: hsl(var(--foreground)) !important;
+}
+
+.text-muted {
+  color: hsl(var(--muted-foreground)) !important;
+}
+
+/* Custom input styling for better integration */
+.q-field--outlined .q-field__control {
+  background-color: hsl(var(--background)) !important;
+  border-radius: calc(var(--radius)) !important;
+}
+
+.q-field--outlined .q-field__control:before {
+  border-color: hsl(var(--border)) !important;
+}
+
+.q-field--outlined .q-field__control:hover:before {
+  border-color: hsl(var(--accent-foreground)) !important;
+}
+
+.q-field--outlined.q-field--focused .q-field__control:after {
+  border-color: hsl(var(--ring)) !important;
+}
+
+/* Remove Quasar's default label positioning for cleaner look */
+.q-field--outlined .q-field__label {
+  display: none;
 }
 </style>

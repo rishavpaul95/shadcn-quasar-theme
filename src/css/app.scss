@@ -1,5 +1,8 @@
 // app global css in SCSS form
 
+// Import shadcn/ui inspired theme
+@import './shadcn-theme.scss';
+
 // Theme variables
 :root {
   --theme-transition: all 0.3s ease;

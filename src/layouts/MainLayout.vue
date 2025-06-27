@@ -6,21 +6,12 @@
 
         <q-toolbar-title> Quasar App </q-toolbar-title>
 
-        <div v-if="authStore.user" class="q-mr-md">
+        <div v-if="authStore.user" class="q-mr-md text-foreground">
           Welcome, {{ authStore.user.fullName || authStore.user.username }}!
         </div>
 
-        <q-btn
-          flat
-          dense
-          round
-          :icon="themeStore.themeIcon"
-          aria-label="Toggle Theme"
-          @click="themeStore.toggleTheme"
-          class="q-mr-sm"
-        >
-          <q-tooltip>Toggle {{ themeStore.isDarkMode ? 'Light' : 'Dark' }} Mode</q-tooltip>
-        </q-btn>
+        <!-- Use our custom theme toggle component -->
+        <ThemeToggle class="q-mr-sm" />
 
         <q-btn
           flat
@@ -29,12 +20,20 @@
           icon="palette"
           aria-label="Theme Settings"
           @click="showThemeSettings = true"
-          class="q-mr-sm"
+          class="q-mr-sm theme-btn"
         >
-          <q-tooltip>Theme Settings</q-tooltip>
+          <q-tooltip class="shadcn-tooltip">Theme Settings</q-tooltip>
         </q-btn>
 
-        <q-btn flat dense round icon="logout" aria-label="Logout" @click="logout" />
+        <q-btn
+          flat
+          dense
+          round
+          icon="logout"
+          aria-label="Logout"
+          @click="logout"
+          class="theme-btn"
+        />
         <div>Quasar v{{ $q.version }}</div>
       </q-toolbar>
     </q-header>
@@ -61,14 +60,13 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useQuasar } from 'quasar'
 import { useAuthStore } from 'src/stores/auth'
-import { useThemeStore } from 'src/stores/theme'
 import EssentialLink from 'components/EssentialLink.vue'
 import ThemeSettings from 'components/ThemeSettings.vue'
+import ThemeToggle from 'components/ThemeToggle.vue'
 
 const router = useRouter()
 const $q = useQuasar()
 const authStore = useAuthStore()
-const themeStore = useThemeStore()
 const showThemeSettings = ref(false)
 
 const logout = () => {
@@ -117,3 +115,72 @@ function toggleLeftDrawer() {
   leftDrawerOpen.value = !leftDrawerOpen.value
 }
 </script>
+
+<style scoped>
+/* Header styling with shadcn/ui theme */
+.q-header {
+  background-color: hsl(var(--card)) !important;
+  border-bottom: 1px solid hsl(var(--border)) !important;
+  box-shadow:
+    0 1px 3px 0 rgb(0 0 0 / 0.1),
+    0 1px 2px -1px rgb(0 0 0 / 0.1) !important;
+}
+
+.q-toolbar {
+  color: hsl(var(--foreground)) !important;
+}
+
+.q-toolbar-title {
+  color: hsl(var(--foreground)) !important;
+  font-weight: 600 !important;
+  font-family: 'Inter', sans-serif !important;
+}
+
+.text-foreground {
+  color: hsl(var(--foreground)) !important;
+}
+
+.theme-btn {
+  color: hsl(var(--muted-foreground)) !important;
+  transition: all 0.2s ease-in-out !important;
+
+  &:hover {
+    color: hsl(var(--foreground)) !important;
+    background-color: hsl(var(--accent)) !important;
+  }
+}
+
+/* Drawer styling */
+.q-drawer {
+  background-color: hsl(var(--card)) !important;
+  border-right: 1px solid hsl(var(--border)) !important;
+}
+
+.q-list .q-item {
+  color: hsl(var(--foreground)) !important;
+
+  &:hover {
+    background-color: hsl(var(--accent)) !important;
+  }
+}
+
+.q-item-label--header {
+  color: hsl(var(--muted-foreground)) !important;
+  font-weight: 600 !important;
+  font-family: 'Inter', sans-serif !important;
+}
+
+/* Page container */
+.q-page-container {
+  background-color: hsl(var(--background)) !important;
+}
+
+/* Tooltip styling */
+.shadcn-tooltip {
+  background-color: hsl(var(--popover)) !important;
+  color: hsl(var(--popover-foreground)) !important;
+  border: 1px solid hsl(var(--border)) !important;
+  border-radius: var(--radius) !important;
+  font-size: 0.75rem !important;
+}
+</style>
