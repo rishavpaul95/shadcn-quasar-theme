@@ -241,13 +241,116 @@
           </div>
           <div>
             <div class="text-subtitle2 text-foreground q-mb-sm">Circular Progress</div>
-            <q-circular-progress :value="progressValue" size="50px" color="primary" />
+            <div class="row q-gutter-md items-center">
+              <div class="column items-center">
+                <q-circular-progress
+                  :value="progressValue"
+                  size="50px"
+                  color="primary"
+                  track-color="grey-3"
+                  :thickness="0.15"
+                  show-value
+                  class="text-primary"
+                  :max="1"
+                >
+                  {{ Math.round(progressValue * 100) }}%
+                </q-circular-progress>
+                <div class="text-caption text-muted-foreground q-mt-xs">Primary</div>
+              </div>
+              <div class="column items-center">
+                <q-circular-progress
+                  :value="progressValue * 0.8"
+                  size="50px"
+                  color="secondary"
+                  track-color="grey-3"
+                  :thickness="0.15"
+                  :max="1"
+                />
+                <div class="text-caption text-muted-foreground q-mt-xs">Secondary</div>
+              </div>
+              <div class="column items-center">
+                <q-circular-progress
+                  :value="progressValue * 0.6"
+                  size="50px"
+                  color="positive"
+                  track-color="grey-3"
+                  :thickness="0.15"
+                  :max="1"
+                />
+                <div class="text-caption text-muted-foreground q-mt-xs">Success</div>
+              </div>
+              <div class="column items-center">
+                <q-circular-progress
+                  :value="progressValue * 0.4"
+                  size="50px"
+                  color="warning"
+                  track-color="grey-3"
+                  :thickness="0.15"
+                  :max="1"
+                />
+                <div class="text-caption text-muted-foreground q-mt-xs">Warning</div>
+              </div>
+              <div class="column items-center">
+                <q-circular-progress
+                  indeterminate
+                  size="50px"
+                  color="info"
+                  track-color="rgba(0,0,0,0.1)"
+                  :thickness="0.15"
+                />
+                <div class="text-caption text-muted-foreground q-mt-xs">Loading</div>
+              </div>
+            </div>
+            <div class="row q-gutter-md items-center q-mt-md">
+              <div class="column items-center">
+                <div class="text-caption text-muted-foreground q-mb-xs">Small</div>
+                <q-circular-progress
+                  :value="progressValue"
+                  size="30px"
+                  color="primary"
+                  track-color="rgba(0,0,0,0.1)"
+                  :thickness="0.2"
+                  :max="1"
+                />
+              </div>
+              <div class="column items-center">
+                <div class="text-caption text-muted-foreground q-mb-xs">Medium</div>
+                <q-circular-progress
+                  :value="progressValue"
+                  size="60px"
+                  color="primary"
+                  track-color="rgba(0,0,0,0.1)"
+                  :thickness="0.1"
+                  show-value
+                  class="text-primary"
+                  :max="1"
+                >
+                  {{ Math.round(progressValue * 100) }}%
+                </q-circular-progress>
+              </div>
+              <div class="column items-center">
+                <div class="text-caption text-muted-foreground q-mb-xs">Large</div>
+                <q-circular-progress
+                  :value="progressValue"
+                  size="80px"
+                  color="primary"
+                  track-color="rgba(0,0,0,0.1)"
+                  :thickness="0.08"
+                  show-value
+                  class="text-primary"
+                  font-size="16px"
+                  :max="1"
+                >
+                  {{ Math.round(progressValue * 100) }}%
+                </q-circular-progress>
+              </div>
+            </div>
           </div>
           <div>
             <div class="text-subtitle2 text-foreground q-mb-sm">Spinners</div>
             <q-spinner color="primary" size="2em" />
-            <q-spinner-dots color="secondary" size="2em" />
-            <q-spinner-grid color="positive" size="2em" />
+            <q-spinner-dots color="secondary" size="2em" class="q-ml-md" />
+            <q-spinner-grid color="positive" size="2em" class="q-ml-md" />
           </div>
         </div>
       </q-card-section>

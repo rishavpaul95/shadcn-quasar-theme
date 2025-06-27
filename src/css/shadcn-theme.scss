@@ -309,6 +309,10 @@ body {
   color: hsl(var(--muted-foreground)) !important;
 }
 
+.text-muted-foreground {
+  color: hsl(var(--muted-foreground)) !important;
+}
+
 .text-primary-shadcn {
   color: hsl(var(--primary)) !important;
 }
@@ -557,64 +561,102 @@ body {
     0 2px 4px -2px rgb(0 0 0 / 0.1) !important;
   min-width: 300px !important;
 
-  // Default notification
+  // Default notification styling - neutral card background
   background-color: hsl(var(--card)) !important;
   color: hsl(var(--card-foreground)) !important;
   border-color: hsl(var(--border)) !important;
 
-  // Success notifications - Green
+  // Override for bg-positive class (success notifications) - only color the icon
+  &.bg-positive {
+    background-color: hsl(var(--card)) !important;
+    color: hsl(var(--card-foreground)) !important;
+    border-color: hsl(var(--border)) !important;
+
+    .q-icon {
+      color: hsl(var(--success)) !important;
+    }
+  }
+
+  // Override for bg-negative class (error notifications) - only color the icon
+  &.bg-negative {
+    background-color: hsl(var(--card)) !important;
+    color: hsl(var(--card-foreground)) !important;
+    border-color: hsl(var(--border)) !important;
+
+    .q-icon {
+      color: hsl(var(--error)) !important;
+    }
+  }
+
+  // Override for bg-warning class (warning notifications) - only color the icon
+  &.bg-warning {
+    background-color: hsl(var(--card)) !important;
+    color: hsl(var(--card-foreground)) !important;
+    border-color: hsl(var(--border)) !important;
+
+    .q-icon {
+      color: hsl(var(--warning)) !important;
+    }
+  }
+
+  // Override for bg-info class (info notifications) - only color the icon
+  &.bg-info {
+    background-color: hsl(var(--card)) !important;
+    color: hsl(var(--card-foreground)) !important;
+    border-color: hsl(var(--border)) !important;
+
+    .q-icon {
+      color: hsl(var(--info)) !important;
+    }
+  }
+
+  // Success notifications - only color the icon (legacy modifier class support)
   &--positive {
-    background-color: hsl(142, 76%, 36%) !important;
-    color: hsl(0, 0%, 100%) !important;
-    border-color: hsl(142, 76%, 30%) !important;
+    background-color: hsl(var(--card)) !important;
+    color: hsl(var(--card-foreground)) !important;
+    border-color: hsl(var(--border)) !important;
+
+    .q-icon {
+      color: hsl(var(--success)) !important;
+    }
   }
 
-  // Error notifications - Red
+  // Error notifications - only color the icon (legacy modifier class support)
   &--negative {
-    background-color: hsl(0, 84%, 60%) !important;
-    color: hsl(0, 0%, 100%) !important;
-    border-color: hsl(0, 84%, 50%) !important;
+    background-color: hsl(var(--card)) !important;
+    color: hsl(var(--card-foreground)) !important;
+    border-color: hsl(var(--border)) !important;
+
+    .q-icon {
+      color: hsl(var(--error)) !important;
+    }
   }
 
-  // Warning notifications - Orange/Yellow
+  // Warning notifications - only color the icon (legacy modifier class support)
   &--warning {
-    background-color: hsl(35, 91%, 62%) !important;
-    color: hsl(0, 0%, 100%) !important;
-    border-color: hsl(35, 91%, 52%) !important;
+    background-color: hsl(var(--card)) !important;
+    color: hsl(var(--card-foreground)) !important;
+    border-color: hsl(var(--border)) !important;
+
+    .q-icon {
+      color: hsl(var(--warning)) !important;
+    }
   }
 
-  // Info notifications - Blue
+  // Info notifications - only color the icon (legacy modifier class support)
   &--info {
-    background-color: hsl(217, 91%, 60%) !important;
-    color: hsl(0, 0%, 100%) !important;
-    border-color: hsl(217, 91%, 50%) !important;
+    background-color: hsl(var(--card)) !important;
+    color: hsl(var(--card-foreground)) !important;
+    border-color: hsl(var(--border)) !important;
+
+    .q-icon {
+      color: hsl(var(--info)) !important;
+    }
   }
 
+  // Default icon color
   .q-icon {
-    color: inherit !important;
-  }
-
-  // Dark mode adjustments
-  .dark & {
-    &--positive {
-      background-color: hsl(142, 76%, 45%) !important;
-      border-color: hsl(142, 76%, 35%) !important;
-    }
-
-    &--negative {
-      background-color: hsl(0, 84%, 65%) !important;
-      border-color: hsl(0, 84%, 55%) !important;
-    }
-
-    &--warning {
-      background-color: hsl(35, 91%, 67%) !important;
-      border-color: hsl(35, 91%, 57%) !important;
-    }
-
-    &--info {
-      background-color: hsl(217, 91%, 65%) !important;
-      border-color: hsl(217, 91%, 55%) !important;
-    }
+    color: hsl(var(--muted-foreground)) !important;
   }
 }
 
@@ -701,6 +743,185 @@ body {
   .q-circular-progress__text {
     color: hsl(var(--foreground)) !important;
     font-family: 'Inter', sans-serif !important;
+    font-weight: 500 !important;
+    font-size: 0.875rem !important;
+  }
+
+  // Track (background circle) styling
+  .q-circular-progress__track {
+    stroke: hsl(var(--border)) !important;
+    opacity: 0.3 !important;
+  }
+
+  // Style the actual SVG circles
+  .q-circular-progress__circle {
+    stroke-linecap: round !important;
+    transition: stroke-dashoffset 0.3s ease-in-out !important;
+  }
+
+  // Color-specific styling for Quasar's color prop
+  &--primary .q-circular-progress__circle {
+    stroke: hsl(var(--primary)) !important;
+  }
+
+  &--secondary .q-circular-progress__circle {
+    stroke: hsl(var(--secondary-foreground)) !important;
+  }
+
+  &--positive .q-circular-progress__circle {
+    stroke: hsl(var(--success)) !important;
+  }
+
+  &--negative .q-circular-progress__circle {
+    stroke: hsl(var(--destructive)) !important;
+  }
+
+  &--warning .q-circular-progress__circle {
+    stroke: hsl(var(--warning)) !important;
+  }
+
+  &--info .q-circular-progress__circle {
+    stroke: hsl(var(--info)) !important;
+  }
+
+  // Additional text color class overrides
+  &.text-primary .q-circular-progress__circle {
+    stroke: hsl(var(--primary)) !important;
+  }
+
+  &.text-secondary .q-circular-progress__circle {
+    stroke: hsl(var(--secondary-foreground)) !important;
+  }
+
+  &.text-positive .q-circular-progress__circle {
+    stroke: hsl(var(--success)) !important;
+  }
+
+  &.text-negative .q-circular-progress__circle {
+    stroke: hsl(var(--destructive)) !important;
+  }
+
+  &.text-warning .q-circular-progress__circle {
+    stroke: hsl(var(--warning)) !important;
+  }
+
+  &.text-info .q-circular-progress__circle {
+    stroke: hsl(var(--info)) !important;
+  }
+
+  // Handle track colors for common Quasar color names
+  &.text-grey-3 .q-circular-progress__track,
+  .text-grey-3 {
+    stroke: hsl(var(--border)) !important;
+    opacity: 0.3 !important;
+  }
+
+  // Ensure track is visible with consistent styling
+  svg circle:first-child {
+    stroke: hsl(var(--border)) !important;
+    opacity: 0.3 !important;
+  }
+
+  // Default fallback for any track color issues
+  .q-circular-progress__track:not([class*='text-']) {
+    stroke: hsl(var(--border)) !important;
+    opacity: 0.3 !important;
+  }
+
+  // Indeterminate state styling
+  &--indeterminate .q-circular-progress__circle {
+    animation: q-circular-progress-rotate 2s linear infinite !important;
+  }
+
+  // Dark mode adjustments
+  .dark & {
+    .q-circular-progress__track,
+    svg circle:first-child {
+      stroke: hsl(var(--border)) !important;
+      opacity: 0.4 !important;
+    }
+
+    // Override hardcoded rgba(0,0,0,0.1) track colors in dark mode
+    // This specifically targets elements that use the problematic hardcoded color
+    svg circle[stroke='rgba(0,0,0,0.1)'],
+    .q-circular-progress__track[stroke='rgba(0,0,0,0.1)'] {
+      stroke: hsl(var(--border)) !important;
+      opacity: 0.6 !important;
+    }
+
+    // Additional fallback for any SVG circles with very low opacity black colors
+    svg circle[stroke*='rgba(0,0,0,0.1)'],
+    svg circle[stroke*='rgba(0, 0, 0, 0.1)'] {
+      stroke: hsl(var(--border)) !important;
+      opacity: 0.6 !important;
+    }
+
+    // Force override for small circular progress that might have hardcoded dark colors
+    // Target small size circular progress specifically
+    &[style*='width: 30px'],
+    &[style*='height: 30px'] {
+      .q-circular-progress__track,
+      svg circle:first-child {
+        stroke: hsl(var(--border)) !important;
+        opacity: 0.6 !important;
+      }
+    }
+
+    // General override for any track with very low opacity in dark mode
+    svg circle:first-child {
+      stroke: hsl(var(--border)) !important;
+      opacity: 0.6 !important;
+    }
+  }
+}
+
+// Dark mode comprehensive circular progress track overrides
+.dark {
+  .q-circular-progress {
+    // Force all SVG track circles to be visible in dark mode
+    svg circle:first-child,
+    .q-circular-progress__track {
+      stroke: hsl(var(--border)) !important;
+      opacity: 0.7 !important;
+    }
+
+    // Override any potential inline styles for track color
+    svg circle:not(.q-circular-progress__circle) {
+      stroke: hsl(var(--border)) !important;
+      opacity: 0.7 !important;
+    }
+
+    // Force all track elements to use proper dark mode colors
+    svg circle.q-circular-progress__track,
+    .q-circular-progress__track {
+      stroke: hsl(var(--border)) !important;
+      opacity: 0.7 !important;
+      color: hsl(var(--border)) !important;
+    }
+
+    // Specific targeting for small progress indicators
+    &[style*='30px'] {
+      svg circle:first-child,
+      svg circle.q-circular-progress__track {
+        stroke: hsl(var(--border)) !important;
+        opacity: 0.8 !important;
+      }
+    }
+
+    // Override currentColor usage in dark mode for track elements
+    svg circle[stroke='currentColor']:first-child {
+      stroke: hsl(var(--border)) !important;
+      opacity: 0.7 !important;
+    }
+  }
+
+  // Global override for any Quasar color utility classes that might cause issues
+  [class*='text-rgba'] {
+    &.q-circular-progress__track {
+      stroke: hsl(var(--border)) !important;
+      opacity: 0.7 !important;
+      color: hsl(var(--border)) !important;
+    }
   }
 }
 
@@ -1152,4 +1373,280 @@ body {
 .text-2xl {
   font-size: 1.5rem !important;
   line-height: 2rem !important;
+}
+
+// Animations for circular progress
+@keyframes q-circular-progress-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+// Ultra-aggressive dark mode fix for small circular progress
+.dark .q-circular-progress[style*='font-size: 30px'] {
+  // Force any circle within a 30px circular progress to be visible
+  svg circle:first-child,
+  svg circle.q-circular-progress__track {
+    stroke: hsl(var(--border)) !important;
+    opacity: 0.8 !important;
+    color: hsl(var(--border)) !important;
+  }
+
+  // Override any text color classes that affect currentColor
+  .text-rgba\(0\,0\,0\,0\.1\) {
+    color: hsl(var(--border)) !important;
+  }
+}
+
+// Alternative approach: target by viewBox which is unique to small size
+.dark .q-circular-progress svg[viewBox*='55.55555555555556'] {
+  circle:first-child {
+    stroke: hsl(var(--border)) !important;
+    opacity: 0.8 !important;
+  }
+}
+
+// Form Controls - Checkbox, Radio, Toggle overrides for shadcn/ui style
+// =============================================================================
+
+// Checkbox overrides
+.q-checkbox {
+  font-family: 'Inter', sans-serif !important;
+
+  .q-checkbox__bg {
+    border: 2px solid hsl(var(--border)) !important;
+    border-radius: calc(var(--radius) / 2) !important;
+    background-color: hsl(var(--background)) !important;
+    transition: all 0.2s ease-in-out !important;
+  }
+
+  // Checkmark path styling
+  .q-checkbox__truthy {
+    stroke: hsl(var(--primary-foreground)) !important;
+    stroke-width: 2.5px !important;
+  }
+
+  // Hover state
+  &:hover .q-checkbox__bg {
+    border-color: hsl(var(--accent-foreground)) !important;
+  }
+
+  // Focus state
+  &:focus .q-checkbox__bg,
+  &.q-checkbox--focused .q-checkbox__bg {
+    border-color: hsl(var(--ring)) !important;
+    box-shadow: 0 0 0 2px hsl(var(--ring) / 0.2) !important;
+  }
+
+  // Label
+  .q-checkbox__label {
+    color: hsl(var(--foreground)) !important;
+    font-weight: 500 !important;
+  }
+}
+
+// Checked checkbox state
+.q-checkbox__inner--truthy .q-checkbox__bg {
+  background-color: hsl(var(--primary)) !important;
+  border-color: hsl(var(--primary)) !important;
+}
+
+// Dark mode checkbox
+.q-checkbox--dark {
+  .q-checkbox__bg {
+    border-color: hsl(var(--border)) !important;
+    background-color: hsl(var(--background)) !important;
+  }
+
+  &.q-checkbox__inner--truthy .q-checkbox__bg,
+  .q-checkbox__inner--truthy .q-checkbox__bg {
+    background-color: hsl(var(--primary)) !important;
+    border-color: hsl(var(--primary)) !important;
+  }
+
+  .q-checkbox__truthy {
+    stroke: hsl(var(--primary-foreground)) !important;
+  }
+}
+
+// Radio button overrides
+.q-radio {
+  font-family: 'Inter', sans-serif !important;
+
+  .q-radio__bg {
+    transition: all 0.2s ease-in-out !important;
+
+    // Outer circle path
+    path:first-child {
+      stroke: hsl(var(--border)) !important;
+      stroke-width: 2px !important;
+      fill: hsl(var(--background)) !important;
+    }
+  }
+
+  // Inner dot for selected state
+  .q-radio__check {
+    fill: transparent !important;
+    transition: all 0.2s ease-in-out !important;
+  }
+
+  // Hover state
+  &:hover .q-radio__bg path:first-child {
+    stroke: hsl(var(--accent-foreground)) !important;
+  }
+
+  // Focus state
+  &:focus .q-radio__bg,
+  &.q-radio--focused .q-radio__bg {
+    filter: drop-shadow(0 0 0 2px hsl(var(--ring) / 0.2)) !important;
+  }
+
+  // Label
+  .q-radio__label {
+    color: hsl(var(--foreground)) !important;
+    font-weight: 500 !important;
+  }
+}
+
+// Selected radio state
+.q-radio__inner--truthy {
+  .q-radio__bg {
+    path:first-child {
+      stroke: hsl(var(--primary)) !important;
+      stroke-width: 2px !important;
+    }
+
+    .q-radio__check {
+      fill: hsl(var(--primary)) !important;
+    }
+  }
+}
+
+// Dark mode radio
+.q-radio--dark {
+  .q-radio__bg path:first-child {
+    stroke: hsl(var(--border)) !important;
+    fill: hsl(var(--background)) !important;
+  }
+
+  &.q-radio__inner--truthy .q-radio__bg,
+  .q-radio__inner--truthy .q-radio__bg {
+    path:first-child {
+      stroke: hsl(var(--primary)) !important;
+    }
+
+    .q-radio__check {
+      fill: hsl(var(--primary)) !important;
+    }
+  }
+}
+
+// Toggle switch overrides
+.q-toggle {
+  font-family: 'Inter', sans-serif !important;
+
+  .q-toggle__track {
+    background-color: hsl(var(--muted)) !important;
+    border: 2px solid hsl(var(--border)) !important;
+    border-radius: 999px !important;
+    transition: all 0.2s ease-in-out !important;
+  }
+
+  .q-toggle__thumb {
+    background-color: hsl(var(--background)) !important;
+    border: 2px solid hsl(var(--border)) !important;
+    border-radius: 50% !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+    transition: all 0.2s ease-in-out !important;
+  }
+
+  // Hover state
+  &:hover .q-toggle__track {
+    border-color: hsl(var(--accent-foreground)) !important;
+  }
+
+  // Focus state
+  &:focus .q-toggle__track,
+  &.q-toggle--focused .q-toggle__track {
+    border-color: hsl(var(--ring)) !important;
+    box-shadow: 0 0 0 2px hsl(var(--ring) / 0.2) !important;
+  }
+
+  // Label
+  .q-toggle__label {
+    color: hsl(var(--foreground)) !important;
+    font-weight: 500 !important;
+  }
+}
+
+// Toggled state
+.q-toggle__inner--truthy {
+  .q-toggle__track {
+    background-color: hsl(var(--primary)) !important;
+    border-color: hsl(var(--primary)) !important;
+  }
+
+  .q-toggle__thumb {
+    background-color: hsl(var(--primary-foreground)) !important;
+    border-color: hsl(var(--primary)) !important;
+  }
+}
+
+// Dark mode toggle
+.q-toggle--dark {
+  .q-toggle__track {
+    background-color: hsl(var(--muted)) !important;
+    border-color: hsl(var(--border)) !important;
+  }
+
+  .q-toggle__thumb {
+    background-color: hsl(var(--background)) !important;
+    border-color: hsl(var(--border)) !important;
+  }
+
+  &.q-toggle__inner--truthy .q-toggle__track,
+  .q-toggle__inner--truthy .q-toggle__track {
+    background-color: hsl(var(--primary)) !important;
+    border-color: hsl(var(--primary)) !important;
+  }
+
+  &.q-toggle__inner--truthy .q-toggle__thumb,
+  .q-toggle__inner--truthy .q-toggle__thumb {
+    background-color: hsl(var(--primary-foreground)) !important;
+    border-color: hsl(var(--primary)) !important;
+  }
+}
+
+// Additional dark mode fixes for form controls
+.dark {
+  // Ensure form control backgrounds are visible
+  .q-checkbox__bg,
+  .q-radio__bg,
+  .q-toggle__track {
+    background-color: hsl(var(--background)) !important;
+  }
+
+  // Ensure selected states are clearly visible
+  .q-checkbox--truthy .q-checkbox__bg,
+  .q-radio--truthy .q-radio__bg,
+  .q-toggle--truthy .q-toggle__track {
+    background-color: hsl(var(--primary)) !important;
+    border-color: hsl(var(--primary)) !important;
+  }
+
+  // Ensure checkmarks and indicators are visible
+  .q-checkbox__truthy {
+    stroke: hsl(var(--primary-foreground)) !important;
+  }
+
+  .q-radio--truthy .q-radio__check {
+    fill: hsl(var(--primary)) !important;
+  }
+
+  .q-toggle--truthy .q-toggle__thumb {
+    background-color: hsl(var(--primary-foreground)) !important;
+  }
 }
