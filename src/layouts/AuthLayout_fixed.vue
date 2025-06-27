@@ -36,5 +36,12 @@ export default {
 </script>
 
 <style scoped>
-/* Styles are now handled in global CSS */
+.auth-background {
+  @apply min-h-screen flex items-center justify-center relative transition-all duration-300;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.dark .auth-background {
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+}
 </style>

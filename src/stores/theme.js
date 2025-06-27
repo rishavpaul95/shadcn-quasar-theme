@@ -64,9 +64,18 @@ export const useThemeStore = defineStore('theme', {
             this.persistTheme()
         },
 
-        // Apply theme to Quasar
+        // Apply theme to both Quasar and Tailwind
         applyTheme() {
+            // Apply to Quasar
             Dark.set(this.isDarkMode)
+
+            // Apply to Tailwind (add/remove 'dark' class from html element)
+            const htmlElement = document.documentElement
+            if (this.isDarkMode) {
+                htmlElement.classList.add('dark')
+            } else {
+                htmlElement.classList.remove('dark')
+            }
 
             // Apply custom colors to CSS variables
             const root = document.documentElement

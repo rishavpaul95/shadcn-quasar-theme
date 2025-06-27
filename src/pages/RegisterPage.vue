@@ -1,16 +1,9 @@
 <template>
   <div class="flex flex-center full-height">
-    <q-card class="q-pa-md shadow-2 my_card" bordered>
+    <q-card class="q-pa-md shadow-2 themed-card" bordered>
       <q-card-section class="text-center">
-        <div
-          class="text-h5 text-weight-bold"
-          :class="themeStore.isDarkMode ? 'text-grey-1' : 'text-grey-9'"
-        >
-          Create Account
-        </div>
-        <div :class="themeStore.isDarkMode ? 'text-grey-4' : 'text-grey-8'">
-          Sign up to get started with your account
-        </div>
+        <div class="text-h5 text-weight-bold themed-text-primary">Create Account</div>
+        <div class="themed-text-secondary">Sign up to get started with your account</div>
       </q-card-section>
       <q-card-section>
         <q-form @submit="register" ref="registerForm" class="q-gutter-md">
@@ -74,7 +67,7 @@
         </q-form>
       </q-card-section>
       <q-card-section class="text-center q-pt-none">
-        <div :class="themeStore.isDarkMode ? 'text-grey-4' : 'text-grey-8'">
+        <div class="themed-text-secondary">
           Already have an account?
           <a
             @click="$router.push({ name: 'login' })"
@@ -94,7 +87,6 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useQuasar } from 'quasar'
 import { useAuthStore } from 'src/stores/auth'
-import { useThemeStore } from 'src/stores/theme'
 import { api } from 'src/boot/axios'
 
 export default {
@@ -103,7 +95,6 @@ export default {
     const $q = useQuasar()
     const router = useRouter()
     const authStore = useAuthStore()
-    const themeStore = useThemeStore()
     const firstName = ref('')
     const lastName = ref('')
     const email = ref('')
@@ -209,7 +200,6 @@ export default {
       emailRules,
       passwordRules,
       confirmPasswordRules,
-      themeStore,
     }
   },
 }
@@ -220,32 +210,11 @@ export default {
   min-height: 100vh;
 }
 
-.my_card {
-  width: 100%;
-  max-width: 420px;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  transition: background-color 0.3s ease;
-}
-
-.body--dark .my_card {
-  background: rgba(30, 30, 30, 0.95);
-}
-
 .cursor-pointer {
   cursor: pointer;
 }
 
 .cursor-pointer:hover {
   text-decoration: underline !important;
-}
-
-.themed-link {
-  color: var(--q-primary);
-}
-
-.themed-link:hover {
-  opacity: 0.8;
 }
 </style>
