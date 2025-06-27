@@ -257,6 +257,35 @@
   }
 }
 
+// Q-Tabs Component
+.q-tabs {
+  background-color: transparent !important;
+
+  .q-tab {
+    color: hsl(var(--muted-foreground)) !important;
+    border-radius: calc(var(--radius) - 2px) !important;
+    transition: all 0.2s ease-in-out !important;
+
+    &.q-tab--active {
+      color: hsl(var(--foreground)) !important;
+      background-color: hsl(var(--muted) / 0.5) !important;
+    }
+
+    &:hover {
+      color: hsl(var(--foreground)) !important;
+      background-color: hsl(var(--muted) / 0.3) !important;
+    }
+  }
+
+  .q-tabs__content {
+    .q-tab__indicator {
+      background-color: hsl(var(--primary)) !important;
+      height: 2px !important;
+      border-radius: 1px !important;
+    }
+  }
+}
+
 // Override body background
 body {
   background-color: hsl(var(--background)) !important;
