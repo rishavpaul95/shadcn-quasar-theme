@@ -12,7 +12,15 @@ A modern Quasar framework project with a beautiful shadcn/ui inspired design sys
 - 📱 **Responsive** - Mobile-first design with proper breakpoints
 - ♿ **Accessible** - Proper focus states, contrast ratios, and ARIA support
 
-## 🚀 Quick Start
+## � Screenshots
+
+### Light Mode
+
+![Example 1](Screenshot_1.png)
+
+![Example 2](Screenshot_2.png)
+
+## �🚀 Quick Start
 
 ### Install Dependencies
 
